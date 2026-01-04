@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.SuperRonanCraft</groupId>
-    <artifactId>BetterRTP</artifactId>
+    <artifactId>BetterRTP-byFrankLovelace</artifactId>
     <packaging>jar</packaging>
     <version>3.6.13</version>
 
     <!-- Upload patches to https://repo.ronanplugins.com/#/ -->
 
     <properties>
-        <maven.compiler.release>8</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release> 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -22,14 +22,15 @@
             <build>
                 <plugins>
                     <plugin>
-                        <!-- Local Server Building -->
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-jar-plugin</artifactId>
-                        <version>3.2.2</version>
-                        <configuration>
-                            <outputDirectory>../../Java/plugins</outputDirectory>
-                        </configuration>
-                    </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- Actualiza esto también por si acaso -->
+                <version>3.13.0</version> 
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
                 </plugins>
             </build>
         </profile>
@@ -86,95 +87,163 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <repositories>
+        <repositories>
+        <!-- Maven Central Repository (MUST BE FIRST for reliability) -->
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- PaperMC Repo -->
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- Spigot Repo -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- PlaceholderAPI Repo -->
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- GitHub based Repos -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- Vault Repo -->
+        <repository>
+            <id>vault-repo</id>
+            <url>https://nexus.hc.to/content/repositories/pub_releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- Worldguard Repo -->
+        <repository>
+            <id>sk89q-repo</id>
+            <url>https://maven.enginehub.org/repo/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- ProjectRed Repo -->
+        <repository>
+            <id>redprotect-repo</id>
+            <url>https://raw.githubusercontent.com/FabioZumbi12/RedProtect/mvn-repo/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- FactionsUUID Repo -->
+        <repository>
+            <id>factions-uuid</id>
+            <url>https://ci.ender.zone/plugin/repository/everything/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- ProtocolLib Repo -->
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/nexus/repository/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- EssentialsX Repo -->
+        <repository>
+            <id>essentials-releases</id>
+            <url>https://repo.essentialsx.net/releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- Used by Husk plugins -->
+        <repository>
+            <id>william278-releases</id>
+            <url>https://repo.william278.net/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <!-- Aikar Repo -->
+        <repository>
+            <id>aikar-repo</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- Aikar Snapshots Repo -->
+        <repository>
+            <id>aikar-snapshots</id>
+            <url>https://repo.aikar.co/content/groups/aikar-snapshot/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- Wesjd Repo (for AnvilGUI snapshots) -->
+        <repository>
+            <id>wesjd-repo</id>
+            <url>https://nexus.wesjd.net/repository/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- anvilgui -->
+        <repository>
+    <id>codemc-repo</id>
+    <url>https://repo.codemc.io/repository/maven-public/</url>
+</repository>
+        <!-- bStats Repo - MUST BE LAST and properly configured -->
+        <repository>
+            <id>bstats-repo</id>
+            <url>https://repo.codemc.io/repository/maven-public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
         <!-- CAN BE UNCOMMENTED IF YOU HAVE ACCESS TO THE REPO -->
         <!--<repository>
             <id>ronanplugins-private</id>
             <name>RonanPlugins Repository</name>
             <url>https://repo.ronanplugins.com/private</url>
         </repository>-->
-        <!-- GitHub based Repos -->
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <!-- Spigot Repo -->
-        <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <!-- PaperMC Repo -->
-        <repository>
-            <id>papermc</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
-        </repository>
-        <!-- Vault Repo -->
-        <repository>
-            <id>vault-repo</id>
-            <url>https://nexus.hc.to/content/repositories/pub_releases</url>
-        </repository>
-        <!-- Worldguard Repo -->
-        <repository>
-            <id>sk89q-repo</id>
-            <url>https://maven.enginehub.org/repo/</url>
-        </repository>
-        <!-- ProjectRed Repo -->
-        <repository>
-            <id>redprotect-repo</id>
-            <url>https://raw.githubusercontent.com/FabioZumbi12/RedProtect/mvn-repo/</url>
-        </repository>
-        <!-- FactionsUUID Repo -->
-        <repository>
-            <id>factions-uuid</id>
-            <url>https://ci.ender.zone/plugin/repository/everything/</url>
-        </repository>
-        <!-- ProtocolLib Repo -->
-        <repository>
-            <id>dmulloy2-repo</id>
-            <url>https://repo.dmulloy2.net/nexus/repository/public/</url>
-        </repository>
-        <!-- EssentialsX Repo -->
-        <repository>
-            <id>essentials-releases</id>
-            <url>https://repo.essentialsx.net/releases/</url>
-        </repository>
-        <!-- PlaceholderAPI Repo -->
-        <repository>
-            <id>placeholderapi</id>
-            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
-        </repository>
-        <!-- MinePlots Repo -->
-        <repository>
-            <id>minecodes-repository-releases</id>
-            <name>mineCodes Organization Repository</name>
-            <url>https://repository.minecodes.pl/releases</url>
-        </repository>
-        <!-- Used by Husk plugins -->
-        <repository>
-            <id>william278-releases</id>
-            <url>https://repo.william278.net/releases</url>
-        </repository>
     </repositories>
+    
     <dependencies>
         <!--Spigot API-->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Spigot Stuff -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <!-- Vault -->
@@ -286,7 +355,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
+            <version>1.18.36</version>
             <scope>provided</scope>
         </dependency>
         <!-- EssentialsX -->
@@ -319,7 +388,7 @@
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
-            <version>2.11.2</version>
+            <version>2.11.5</version>
             <scope>provided</scope>
         </dependency>
         <!-- HuskClaims (https://www.spigotmc.org/resources/huskclaims.114467/) (Added in 3.6.13)-->
@@ -336,27 +405,12 @@
             <version>3.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- MinePlots (https://builtbybit.com/resources/mineplots.21646/) (Added in 3.6.6 )   -->
-        <dependency>
-            <groupId>pl.minecodes.plots</groupId>
-            <artifactId>plugin-api</artifactId>
-            <version>3.4.5</version>
-            <scope>provided</scope>
-        </dependency>
         <!-- FoliaLib -->
         <dependency>
             <groupId>com.github.TechnicallyCoded</groupId>
             <artifactId>FoliaLib</artifactId>
             <version>0.4.3</version>
             <scope>compile</scope>
-        </dependency>
-        <!-- FactionsBridge -->
-        <dependency>
-            <groupId>com.dansplugins.factionsystem</groupId>
-            <artifactId>FactionsBridge</artifactId>
-            <version>1.3.8</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/FactionsBridge-1.3.8.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.github.WhipDevelopment</groupId>
@@ -377,13 +431,26 @@
             <optional>true</optional>
         </dependency>-->
         <!-- Provided by repo: devmart-public -->
+        <!-- AnvilGUI -->
         <dependency>
-            <groupId>com.bekvon.bukkit.residence</groupId>
-            <artifactId>Residence</artifactId>
-            <version>5.1.4.1</version>
-            <scope>system</scope>
-            <optional>true</optional>
-            <systemPath>${project.basedir}/lib/Residence5.1.4.1.jar</systemPath>
+            <groupId>net.wesjd</groupId>
+            <artifactId>anvilgui</artifactId>
+            <version>1.9.2-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- bStats -->
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>1.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- TaskChain -->
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>taskchain-bukkit</artifactId>
+            <version>3.7.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
